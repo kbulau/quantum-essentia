@@ -8,6 +8,7 @@ import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 import { RecoverPasswordForm } from './RecoverPasswordForm'
 
 import classes from './index.module.scss'
+import { RenderParams } from '../../_components/RenderParams'
 
 export default async function RecoverPassword() {
   return (
@@ -25,11 +26,14 @@ export default async function RecoverPassword() {
       </div>
       <div className={classes.formWrapper}>
         <div className={classes.formContainer}>
+          <RenderParams className={classes.params} />
+          <Link href="/login" className={classes.backLink}>
+            <Image src="/assets/icons/arrow-left.svg" alt="left arrow" width={24} height={24} />
+            <p>Back</p>
+          </Link>
           <div className={classes.formTitle}>
-            <h3>Create Account</h3>
-            <Image src="/assets/icons/hand.png" alt="hand" width={30} height={30} />
+            <h3>Forgot Password</h3>
           </div>
-          <p>Please enter details</p>
           <RecoverPasswordForm />
         </div>
       </div>
