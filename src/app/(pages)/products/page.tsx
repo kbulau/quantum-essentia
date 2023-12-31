@@ -5,11 +5,12 @@ import { Category, Page } from '../../../payload/payload-types'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
-import Categories from '../../_components/Categories'
 import { Gutter } from '../../_components/Gutter'
+import { HR } from '../../_components/HR'
 import Filters from './Filters'
 
 import classes from './index.module.scss'
+
 const Products = async () => {
   const { isEnabled: isDraftMode } = draftMode()
 
@@ -22,16 +23,19 @@ const Products = async () => {
       slug: 'products',
       draft: isDraftMode,
     })
+
     categories = await fetchDocs<Category>('categories')
   } catch (error) {
     console.log(error)
   }
+
   return (
     <div className={classes.container}>
       <Gutter className={classes.products}>
         <Filters categories={categories} />
-        <Blocks blocks={page.layout} disableTopPadding={true} />
+        <Blocks blocks={page?.layout} disableTopPadding={true} />
       </Gutter>
+      <HR />
     </div>
   )
 }
